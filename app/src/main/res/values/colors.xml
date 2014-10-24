@@ -5,4 +5,5 @@
     <color name="accent">#fff</color>
     <color name="windowBackground">@android:color/white</color>
     <color name="textColorPrimapry">@android:color/white</color>
+    <color name="navigtionBar">#263238</color>
 </resources>

@@ -9,6 +9,7 @@
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimapry</item>
+        <item name="android:navigationBarColor">@color/navigtionBar</item>
     </style>
 
 

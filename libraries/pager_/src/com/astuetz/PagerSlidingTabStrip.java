@@ -49,11 +49,11 @@ import com.astuetz.pagerslidingtabstrip.R;
 
 public class PagerSlidingTabStrip extends HorizontalScrollView {
 
-    public interface TabBackgroundProvider {
+    public static interface TabBackgroundProvider {
         public View getPageTabBackground(int position);
     }
 
-    public interface TabCustomViewProvider {
+    public static interface TabCustomViewProvider {
         public View getPageTabCustomView(int position);
     }
 

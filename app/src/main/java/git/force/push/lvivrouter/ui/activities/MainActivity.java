@@ -21,6 +21,7 @@ import git.force.push.lvivrouter.ui.drawer.NavItems;
 import git.force.push.lvivrouter.ui.drawer.NavigationDrawerAdapter;
 import git.force.push.lvivrouter.ui.fragments.ContentFragment;
 import git.force.push.lvivrouter.ui.fragments.HistoryFragment;
+import git.force.push.lvivrouter.ui.fragments.RoutinesListFragment;
 import git.force.push.lvivrouter.ui.model.HistoryItem;
 
 
@@ -132,6 +133,8 @@ public class MainActivity extends Activity {
                 histFragment.setHistoryItemsListener(mHistoryItemListener);
                 fragment = histFragment;
                 break;
+            case  ROUTES_LIST:
+                fragment = new RoutinesListFragment();
             default:
                 fragment = new ContentFragment();
                 Bundle args = new Bundle();

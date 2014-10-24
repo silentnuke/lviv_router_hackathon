@@ -48,20 +48,24 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(HistoryAdapter.ViewHolder viewHolder, int i) {
-        HistoryItem item = mItems.get(i);
+        final HistoryItem item = mItems.get(i);
         viewHolder.item = item;
         viewHolder.fromTextView.setText(item.getFromStreet() + " " + item.getFromNumber());
         viewHolder.toTextView.setText(item.getToStreet() + " " + item.getToNumber());
         viewHolder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                if(mHistoryItemClickListener != null){
+                    mHistoryItemClickListener.onHistoryItemClick(item);
+                }
             }
         });
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
+                if(mRoutesButtonListener != null){
+                    mRoutesButtonListener.onRoutesButtonClick(item);
+                }
             }
         });
     }

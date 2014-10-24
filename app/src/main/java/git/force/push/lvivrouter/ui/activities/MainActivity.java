@@ -130,7 +130,7 @@ public class MainActivity extends Activity {
             case HISTORY:
                 HistoryFragment histFragment = new HistoryFragment();
                 histFragment.setHistoryItemsListener(mHistoryItemListener);
-                fragment = fragment;
+                fragment = histFragment;
                 break;
             default:
                 fragment = new ContentFragment();

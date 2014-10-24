@@ -1,12 +1,12 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <Toolbar
             android:id="@+id/toolbar"
@@ -14,14 +14,27 @@
             android:layout_height="@dimen/toolbar_height"
             android:background="?android:attr/colorPrimary"
             android:gravity="bottom"
-            android:paddingBottom="16dp">
-        </Toolbar>
+            android:paddingBottom="16dp"></Toolbar>
 
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="16dp" />
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/button_floating_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="-30dp"
+            android:src="@drawable/ic_plus"
+            fab:fab_colorNormal="#FFC006"
+            fab:fab_colorPressed="#EE6B00"
+            fab:fab_type="mini" />
+    </RelativeLayout>
 
 
     <ListView

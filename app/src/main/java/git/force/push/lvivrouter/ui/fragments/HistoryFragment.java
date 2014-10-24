@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,14 @@ import git.force.push.lvivrouter.ui.model.HistoryItem;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends Fragment implements HistoryAdapter.OnHistoryItemClick, HistoryAdapter.OnRoutesButtonClick{
+
+    public static interface OnHistoryItemSelected{
+        public void onHistoryItemSelected(HistoryItem item);
+    }
 
     private List<HistoryItem> mHistoryItems;
+    private OnHistoryItemSelected mItemListener;
 
     public HistoryFragment() {
     }
@@ -30,9 +36,9 @@ public class HistoryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mHistoryItems = new ArrayList<HistoryItem>();
         for(int i = 0; i < 36; i++){
-            String fromString = "Початкова " + i;
-            String toString = "Кiнцева " + i;
-            mHistoryItems.add(new HistoryItem(fromString, toString));
+            String fromString = "Початкова";
+            String toString = "Кiнцева";
+            mHistoryItems.add(new HistoryItem(fromString, Integer.toString(i), toString, Integer.toString(i)));
         }
     }
 
@@ -47,6 +53,25 @@ public class HistoryFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final RecyclerView historyRecyclerView = (RecyclerView)getView().findViewById(R.id.historyRecyclerView);
-        historyRecyclerView.setAdapter(new HistoryAdapter(getActivity(), mHistoryItems));
+        HistoryAdapter adapter = new HistoryAdapter(getActivity(), mHistoryItems);
+        adapter.setHistoryItemClickListener(this);
+        adapter.setRoutesButtonListener(this);
+        historyRecyclerView.setAdapter(adapter);
+    }
+
+    public void setHistoryItemsListener(OnHistoryItemSelected listener){
+        mItemListener = listener;
+    }
+
+    @Override
+    public void onHistoryItemClick(HistoryItem item) {
+        if(mItemListener != null){
+            mItemListener.onHistoryItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onRoutesButtonClick(HistoryItem item) {
+
     }
 }

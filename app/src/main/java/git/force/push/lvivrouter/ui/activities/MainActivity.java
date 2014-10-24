@@ -21,6 +21,7 @@ import git.force.push.lvivrouter.ui.drawer.NavItems;
 import git.force.push.lvivrouter.ui.drawer.NavigationDrawerAdapter;
 import git.force.push.lvivrouter.ui.fragments.ContentFragment;
 import git.force.push.lvivrouter.ui.fragments.HistoryFragment;
+import git.force.push.lvivrouter.ui.model.HistoryItem;
 
 
 public class MainActivity extends Activity {
@@ -127,7 +128,9 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         switch (navItem){
             case HISTORY:
-                fragment = new HistoryFragment();
+                HistoryFragment histFragment = new HistoryFragment();
+                histFragment.setHistoryItemsListener(mHistoryItemListener);
+                fragment = fragment;
                 break;
             default:
                 fragment = new ContentFragment();
@@ -169,5 +172,12 @@ public class MainActivity extends Activity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+    private HistoryFragment.OnHistoryItemSelected mHistoryItemListener = new HistoryFragment.OnHistoryItemSelected() {
+        @Override
+        public void onHistoryItemSelected(HistoryItem item) {
+        //Show search screen and fill it with data
+        }
+    };
 
 }

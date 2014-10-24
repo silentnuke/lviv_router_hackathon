@@ -5,19 +5,31 @@ package git.force.push.lvivrouter.ui.model;
  */
 public class HistoryItem {
 
-    private String mFrom;
-    private String mTo;
+    private String mFromStreet;
+    private String mToStreet;
+    private String mNumberFrom;
+    private String mNumberTo;
 
-    public HistoryItem(String from, String to){
-        mFrom = from;
-        mTo = to;
+    public HistoryItem(String fromStreet, String fromNumber, String toStreet, String toNumber){
+        mFromStreet = fromStreet;
+        mToStreet = toStreet;
+        mNumberFrom = fromNumber;
+        mNumberTo = toNumber;
     }
 
-    public String getFrom() {
-        return mFrom;
+    public String getFromStreet() {
+        return mFromStreet;
     }
 
-    public String getTo() {
-        return mTo;
+    public String getToStreet() {
+        return mToStreet;
+    }
+
+    public String getFromNumber() {
+        return mNumberFrom;
+    }
+
+    public String getToNumber() {
+        return mNumberTo;
     }
 }

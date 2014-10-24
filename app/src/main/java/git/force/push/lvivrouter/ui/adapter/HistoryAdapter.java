@@ -17,8 +17,18 @@ import git.force.push.lvivrouter.ui.model.HistoryItem;
  */
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
+    public static interface OnHistoryItemClick{
+        public void onHistoryItemClick(HistoryItem item);
+    }
+    public static interface OnRoutesButtonClick{
+        public void onRoutesButtonClick(HistoryItem item);
+    }
+
     private List<HistoryItem> mItems;
     private LayoutInflater mInflater;
+
+    private OnHistoryItemClick mHistoryItemClickListener;
+    private OnRoutesButtonClick mRoutesButtonListener;
 
     public HistoryAdapter(Context context, List<HistoryItem> items){
         mItems = items;
@@ -31,14 +41,29 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         ViewHolder holder = new ViewHolder(view);
         holder.fromTextView = (TextView)view.findViewById(R.id.fromTextView);
         holder.toTextView = (TextView)view.findViewById(R.id.toTextView);
+        holder.root = view;
+        holder.button = view.findViewById(R.id.buttonRoutes);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(HistoryAdapter.ViewHolder viewHolder, int i) {
         HistoryItem item = mItems.get(i);
-        viewHolder.fromTextView.setText(item.getFrom());
-        viewHolder.toTextView.setText(item.getFrom());
+        viewHolder.item = item;
+        viewHolder.fromTextView.setText(item.getFromStreet() + " " + item.getFromNumber());
+        viewHolder.toTextView.setText(item.getToStreet() + " " + item.getToNumber());
+        viewHolder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+            }
+        });
+        viewHolder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+            }
+        });
     }
 
     @Override
@@ -48,11 +73,22 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
+        HistoryItem item;
+        View root;
+        View button;
         TextView fromTextView;
         TextView toTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
         }
+    }
+
+    public void setHistoryItemClickListener(OnHistoryItemClick historyItemClickListener) {
+        this.mHistoryItemClickListener = historyItemClickListener;
+    }
+
+    public void setRoutesButtonListener(OnRoutesButtonClick routesButtonListener) {
+        this.mRoutesButtonListener = routesButtonListener;
     }
 }

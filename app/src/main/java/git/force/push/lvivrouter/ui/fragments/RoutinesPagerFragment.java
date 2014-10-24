@@ -40,5 +40,6 @@ public class RoutinesPagerFragment extends android.support.v4.app.Fragment {
         pager.setAdapter(new RoutinesPagerAdapter(getActivity(), getFragmentManager(), icons));
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) getView().findViewById(R.id.tabs);
         tabs.setViewPager(pager);
+        tabs.setIndicatorColor(0xFFFFC006);
     }
 }

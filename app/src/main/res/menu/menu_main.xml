@@ -1,9 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings" />
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:showAsAction="ifRoom"
+        android:title="@string/nav_title_search" />
+
+    <item
+        android:icon="@drawable/ic_directions_white_24dp"
+        android:id="@+id/action_navigate"
+        android:showAsAction="ifRoom"
+        android:title="@string/nav_title_routes_list" />
+
 </menu>

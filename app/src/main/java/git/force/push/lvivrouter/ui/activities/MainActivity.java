@@ -20,6 +20,7 @@ import git.force.push.lvivrouter.R;
 import git.force.push.lvivrouter.ui.drawer.NavItems;
 import git.force.push.lvivrouter.ui.drawer.NavigationDrawerAdapter;
 import git.force.push.lvivrouter.ui.fragments.ContentFragment;
+import git.force.push.lvivrouter.ui.fragments.HistoryFragment;
 
 
 public class MainActivity extends Activity {
@@ -122,11 +123,19 @@ public class MainActivity extends Activity {
 
     private void selectItem(int position) {
         // update the main content by replacing fragments
-        Fragment fragment = new ContentFragment();
-        Bundle args = new Bundle();
-        args.putInt(ContentFragment.ARG_CONTENT_NUMBER, position);
-        fragment.setArguments(args);
-
+        NavItems navItem = NavItems.values()[position];
+        Fragment fragment = null;
+        switch (navItem){
+            case HISTORY:
+                fragment = new HistoryFragment();
+                break;
+            default:
+                fragment = new ContentFragment();
+                Bundle args = new Bundle();
+                args.putInt(ContentFragment.ARG_CONTENT_NUMBER, position);
+                fragment.setArguments(args);
+                break;
+        }
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2013 The Android Open Source Project
 
@@ -12,18 +13,18 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-
+-->
 <resources>
-    <string name="app_name">Lviv Router Material</string>
 
+    <string name="app_name">Lviv Router Material</string>
     <string name="nav_title_search">Пошук маршруту</string>
     <string name="nav_title_history">Історiя пошуку</string>
     <string name="nav_title_routes_list">Список маршрутiв</string>
     <string name="nav_title_about">Про додаток</string>
-
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
